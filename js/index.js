@@ -76,16 +76,15 @@
         };
         /*撤销操作*/
         this.iptPrev.onclick = function() {
-          // t.step--;
-          // t.clear();
-          // if (t.step <= -1) return t.step = -1;
-          // t.ctx.putImageData(t.stepData[t.step], 0, 0);
-          t.ctx.restore();
+          t.step--;
+          t.clear();
+          if (t.step <= -1) return t.step = -1;
+          t.ctx.putImageData(t.stepData[t.step], 0, 0);
         },
         this.iptNext.onclick = function() {
-          // if (t.step == t.stepData.length - 1) return;
-          // t.step++;
-          // t.ctx.putImageData(t.stepData[t.step], 0, 0);
+          if (t.step == t.stepData.length - 1) return;
+          t.step++;
+          t.ctx.putImageData(t.stepData[t.step], 0, 0);
         },
         /*鼠标按下事件，记录鼠标位置，并绘制，解锁lock，打开mousemove事件*/
         this.canvas['on' + t.StartEvent] = function (e) {
@@ -100,7 +99,7 @@
           var touch = t.touch ? e.touches[0] : e;
           var _x = touch.clientX - touch.target.offsetLeft;//鼠标在画布上的x坐标，以画布左上角为起点 
           var _y = touch.clientY - touch.target.offsetTop;//鼠标在画布上的y坐标，以画布左上角为起点 
-          if (t.lock)//t.lock为true则执行
+          if (t.lock)//t.lock为true则执行 
           {
             t.ctx.beginPath(); // 开始绘制路径，必须调用
             t.ctx.moveTo(t.lastX, t.lastY); // 将绘图游标移动到到上一点
@@ -108,6 +107,8 @@
             t.ctx.closePath();
             t.ctx.stroke(); // 描边路径
           } else {
+            // console.log(_x);
+            // console.log(_y);
             t.canvas.style.left = touch.clientX - t.lastX + 'px';
             t.canvas.style.top = touch.clientY - t.lastY + 'px';
           }
@@ -115,11 +116,11 @@
           t.lastY = _y;
         };
         this.canvas['on' + t.EndEvent] = function (e) {
-          // setTimeout(function() {
-          //   var imgData=t.ctx.getImageData(0, 0, t.w, t.h);
-          //   t.stepData[t.step+1] = imgData;
-          //   t.step++;
-          // }, 10);
+          setTimeout(function() {
+            var imgData=t.ctx.getImageData(0, 0, t.w, t.h);
+            t.stepData[t.step+1] = imgData;
+            t.step++;
+          }, 10);
           
           /*重置数据*/
           t.lock = false;
