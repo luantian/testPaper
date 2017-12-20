@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>草稿纸实现</title>
+  <script src="js/zepto.min.js"></script>
+  <script src="js/vconsole.min.js"></script>
+  <script src="js/index.js"></script>
+  <link rel="stylesheet" href="./font/iconfont.css">
+  <link rel="stylesheet" href="./scss/index.css">
+  <script>
+    // init vConsole
+    var vConsole = new VConsole();
+    console.log('hello world');
+  </script>
+</head>
+<body>
+  <header id="header">
+    <ul class="clearfix">
+      <li id="cha"><i class="iconfont icon-cha"></i></li>
+      <li id="clear"><i class="iconfont icon-trash"></i></li>
+      <li id="qianjin"><i class="iconfont icon-qianjin"></i></li>
+      <li id="fanhui1"><i class="iconfont icon-fanhui1"></i></li>
+    </ul>
+  </header>
+  <div style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+    <canvas id="canvas">您的浏览器不支持 canvas 标签</canvas>
+  </div>
+</body>
+</html>
